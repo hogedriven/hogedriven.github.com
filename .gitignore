@@ -1,0 +1,6 @@
+# ignore file patterns
+.*
+*.swp
+
+# Don't ignore file patterns below
+!.gitignore
