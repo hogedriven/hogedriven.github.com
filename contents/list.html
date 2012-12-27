@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width">
+
+<link rel="stylesheet" type="text/css" href="../resources/css/34gs.css" />
+<link rel="stylesheet" type="text/css" href="../resources/css/34gs-queries.css" />
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="../resources/js/knockout-2.2.0.js"></script>
+
+<script type="text/javascript">
+/*$(function(){
+    $(document).ready( function() {
+        //表示に使用するデータを取得
+        
+        var target = "http://shielded-plateau-9573.herokuapp.com/api/user/KiyotakaKunihira";
+        var jsonson = "";
+        $.getJSON(target, function(json){
+			jsonson = json;
+				alert(json);
+        });
+        
+    });
+});
+*/
+
+//var target = "http://shielded-plateau-9573.herokuapp.com/api/user/KiyotakaKunihira?jsoncallback=?";
+var target = "http://shielded-plateau-9573.herokuapp.com/api/user/KiyotakaKunihira?callback=?";
+var yahoo = 'http://search.yahooapis.jp/BlogSearchService/V1/blogSearch?appid=wings-project&results=10&output=json&callback=?';
+
+function Slideshow(title, username, url, thumbnailUrl) {
+	var self = this;
+	self.Title = title;
+	self.Username = username;
+	self.Url = url;
+	self.ThumbnailUrl = thumbnailUrl;
+}
+
+function SlideshowModel() {
+	this.self = this;
+	
+	var avairableSlideshows = new Array();
+	self.slideshows = ko.observableArray(avairableSlideshows);
+}
+
+var slideshowModel = new SlideshowModel();
+//ko.applyBindings(slideshowModel);
+	
+
+$(document).ready(function(){
+	slideshowModel.avairableSlideshows;
+	$.getJSON(target,
+		{"query": "hogedriven", "ts": new Date().getTime()}, 
+		function(data){
+			alert("hoge");
+			jsondata = data["slides"];	
+			for ( var i = 0; i < jsondata.length; i++ ) {
+				slideshowModel.avairableSlideshows.push(
+					new Slideshow(jsondata[i].Title, 
+						jsondata[i].Username,
+						jsondata[i].Url,
+						jsondata[i].ThumbnailUrl));
+			}	
+	});
+
+});	
+
+</script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row" data-bind="foreach: slideshows">
+			<div class="col_5" id="test" >
+				<ul>
+					<li data-bind="text: Title"></li>
+					<li data-bind="text: Username"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
