@@ -190,13 +190,13 @@ a.link {
 }
 
 .g-nav .recruit a {
-    width: 90px;
-    background-position: -766px 0;
+    width: 110px;
+    background-position: -372px 0;
 }
 
 .g-nav .recruit a.current {
-    width: 90px;
-    background-position: -766px -38px;
+    width: 110px;
+    background-position: -372px -38px;
 }
 
 .g-nav li a.current {
