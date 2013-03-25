@@ -25,8 +25,8 @@ setTimeout(function () {
                 ["`"],
                 [" "]
             ];
-            var p = Math.sin(new Date().getTime() * 0.0015) * 0.5 + 0.5;
-            //var p = Math.abs(Math.sin(new Date().getTime() * 0.0015)) * 0.5 + 0.5;
+            //var p = Math.sin(new Date().getTime() * 0.0015) * 0.5 + 0.5;
+            var p = Math.abs(Math.sin(new Date().getTime() * 0.0015)) * 0.5 + 0.5;
             // console.log(p);
 
             var i = 0, l = master.length;
