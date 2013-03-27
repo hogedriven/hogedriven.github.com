@@ -318,5 +318,15 @@ a.link {
     display: none;
 }
 
+.news-list ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 
-
+.news-list li {
+    margin: 0;
+    padding: 6px 0;
+    clear: both;
+    border-bottom: #ccc 1px dotted;
+}

@@ -40,7 +40,6 @@ var Util = function()
 				});
 				$(".btn1").commonBtn();
 				$(".g-nav li a").globalNavBtn();
-				$(".mod-product-section li a").commonBtn();
 			});
 		});
 	}();

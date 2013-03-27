@@ -181,10 +181,6 @@ h3 a {
     margin: 0 30px 0 0;
 }
 
-.index-container {
-    background: url("/images/bg/bg_body.png") repeat-x 0 0;
-}
-
 .index-container .body {
     margin: 0 auto;
     width: 960px;
@@ -203,7 +199,7 @@ h3 a {
     clear: both;
 }
 
-.index-container .product {
+.index-container .event {
     margin: 0 30px 0 0;
     width: 465px;
     float: left;
