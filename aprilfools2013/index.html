@@ -21,6 +21,20 @@
     <link href='http://fonts.googleapis.com/css?family=Gilda+Display' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="shared/js/jquery.min.js"></script>
     <script type="text/javascript" src="shared/js/utils.js"></script>
+    <script type="text/javascript" src="shared/js/jGravity-min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+                $('body').jGravity({
+                    target: 'everything',
+                    ignoreClass: 'ignoreMe',
+                    weight: 'light',
+                    depth: 1,
+                    drag: true
+                });
+
+        });
+    </script>
 </head>
 <body id="pagetop">
 <div class="layout">
@@ -232,7 +246,7 @@
     <div class="news-list">
         <ul>
             <li>
-                <div class="date">2013/04/01  <img src="shared/img/new.png" width="28" height="11"/></div>
+                <div class="date">2013/04/01 <img src="shared/img/new.png" width="28" height="11"/></div>
                 <div class="title">
                     ステーキ駆動で「鉄板ネタ」と間違えて「鉄板」を持ち込んだ人が8人を越えました。
                 </div>
