@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width">
+
+<link rel="stylesheet" type="text/css" href="../resources/css/34gs.css" />
+<link rel="stylesheet" type="text/css" href="../resources/css/34gs-queries.css" />
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="../resources/js/knockout-2.2.0.js"></script>
+
+
+</head>
+<body>
+	<div class="container">
+		<div class="row" data-bind="foreach: slides">
+			<div class="col_5" id="test" >
+				<ul>
+					<li><a data-bind="attr: { href: Url}">
+            <div>
+              <div><img data-bind="attr: {src: ThumbnailUrl}"></div>
+              <div data-bind="text: Title"></div>
+            </div>
+          </a></li>
+					<li data-bind="text: Username"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+  
+<script type="text/javascript">
+  
+var target = "http://shielded-plateau-9573.herokuapp.com/api/search/hogedriven?callback=?";
+
+function SlideshowModel() {
+	var self = this;
+	
+  self.slides = ko.observableArray([]);
+}
+
+var slideshowModel = new SlideshowModel();
+
+ko.applyBindings(slideshowModel);
+
+$(document).ready(function(){
+//	slideshowModel.avairableSlideshows;
+	$.getJSON(target,
+		{"query": "hogedriven", "ts": new Date().getTime()}, 
+		function(data){
+			jsondata = data["slides"];	
+			for ( var i = 0; i < jsondata.length; i++ ) {
+				slideshowModel.slides.push(
+					{Title: jsondata[i].Title, 
+					 Username:	jsondata[i].Username,
+					 Url:	jsondata[i].URL,
+					 ThumbnailUrl:	jsondata[i].ThumbnailURL});
+			}	
+	});
+
+});	
+
+</script>
+
+</body>
+</html>
