@@ -10,58 +10,51 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="../resources/js/knockout-2.2.0.js"></script>
 
+
+</head>
+<body>
+	<div class="container">
+		<div class="row" data-bind="foreach: slides">
+			<div class="col_5" id="test" >
+				<ul>
+					<li><a data-bind="attr: { href: Url}">
+            <div>
+              <div><img data-bind="attr: {src: ThumbnailUrl}"></div>
+              <div data-bind="text: Title"></div>
+            </div>
+          </a></li>
+					<li data-bind="text: Username"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+  
 <script type="text/javascript">
-/*$(function(){
-    $(document).ready( function() {
-        //表示に使用するデータを取得
-        
-        var target = "http://shielded-plateau-9573.herokuapp.com/api/user/KiyotakaKunihira";
-        var jsonson = "";
-        $.getJSON(target, function(json){
-			jsonson = json;
-				alert(json);
-        });
-        
-    });
-});
-*/
-
-//var target = "http://shielded-plateau-9573.herokuapp.com/api/user/KiyotakaKunihira?jsoncallback=?";
-var target = "http://shielded-plateau-9573.herokuapp.com/api/user/KiyotakaKunihira?callback=?";
-var yahoo = 'http://search.yahooapis.jp/BlogSearchService/V1/blogSearch?appid=wings-project&results=10&output=json&callback=?';
-
-function Slideshow(title, username, url, thumbnailUrl) {
-	var self = this;
-	self.Title = title;
-	self.Username = username;
-	self.Url = url;
-	self.ThumbnailUrl = thumbnailUrl;
-}
+  
+var target = "http://shielded-plateau-9573.herokuapp.com/api/search/hogedriven?callback=?";
 
 function SlideshowModel() {
-	this.self = this;
+	var self = this;
 	
-	var avairableSlideshows = new Array();
-	self.slideshows = ko.observableArray(avairableSlideshows);
+  self.slides = ko.observableArray([]);
 }
 
 var slideshowModel = new SlideshowModel();
-//ko.applyBindings(slideshowModel);
-	
+
+ko.applyBindings(slideshowModel);
 
 $(document).ready(function(){
-	slideshowModel.avairableSlideshows;
+//	slideshowModel.avairableSlideshows;
 	$.getJSON(target,
 		{"query": "hogedriven", "ts": new Date().getTime()}, 
 		function(data){
-			alert("hoge");
 			jsondata = data["slides"];	
 			for ( var i = 0; i < jsondata.length; i++ ) {
-				slideshowModel.avairableSlideshows.push(
-					new Slideshow(jsondata[i].Title, 
-						jsondata[i].Username,
-						jsondata[i].Url,
-						jsondata[i].ThumbnailUrl));
+				slideshowModel.slides.push(
+					{Title: jsondata[i].Title, 
+					 Username:	jsondata[i].Username,
+					 Url:	jsondata[i].URL,
+					 ThumbnailUrl:	jsondata[i].ThumbnailURL});
 			}	
 	});
 
@@ -69,17 +62,5 @@ $(document).ready(function(){
 
 </script>
 
-</head>
-<body>
-	<div class="container">
-		<div class="row" data-bind="foreach: slideshows">
-			<div class="col_5" id="test" >
-				<ul>
-					<li data-bind="text: Title"></li>
-					<li data-bind="text: Username"></li>
-				</ul>
-			</div>
-		</div>
-	</div>
 </body>
 </html>
