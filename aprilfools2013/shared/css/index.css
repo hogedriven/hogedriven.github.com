@@ -1,0 +1,15 @@
+#logo {
+    font-family: 'Gilda Display', serif;
+}
+.copyright {
+    font-size: 8px;
+    color: #ffffff;
+}
+.small {
+    font-size: 6px;
+    color: #999999;
+}
+.event-list ul li {
+    list-style-type: none;
+    margin-bottom: 10px;
+}
