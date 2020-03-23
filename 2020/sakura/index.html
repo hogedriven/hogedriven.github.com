@@ -1,0 +1,53 @@
+<html lang="ja">
+<style>	
+@keyframes horizontal {
+    0% { transform:translateX( -30px); }
+  100% { transform:translateX(  0px); }
+}
+.sakura {
+  position:absolute;
+  height:0;
+  width:0;
+  border: 10px solid pink;
+  border-radius: 15px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  animation: horizontal 1s ease-in-out infinite alternate;
+}
+.sakura::after {
+  content:"";
+  display:block;
+  position:absolute;
+  top:-7px;
+  left:-7px;
+  height:0;
+  width:0;
+  border: 10px solid pink;
+  border-radius: 15px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  transform: rotate(15deg);
+}
+</style>
+<div></div>
+<script>
+(function(){
+document.body.onclick = function(e) {
+  const x = e.pageX;
+  const y = e.pageY;
+  let hana = document.createElement('div');
+  hana.setAttribute('class', 'sakura');
+  hana.setAttribute('style', 'top:' + y + 'px; left:' + x +'px;');
+
+  hana.animate(
+    [
+      { top: y+'px' },
+      { top:window.innerHeight+'px'}
+    ],
+    { duration: 6000, iterations: 3 }
+  )
+  document.body.appendChild(hana);
+}
+})()
+</script>
+</html>
